@@ -8,10 +8,17 @@
 </head>
 <body>
   <p class="title">BIAS</p>
-  <h1>Find out what <br>brands really <br>care about</h1>
+  <h1>Find out what brands really care about</h1>
   <p>Companies claim to be saving the world in one way or another. Scan a logo today to find the truth of their bias.</p>
+
   <br>
-  <a href="results.html"><button>Scan now</button></a>
-  <input type="file" accept="image/*;capture=camera">
+
+  <a href="results.html">
+    <label for="imageUpload">Scan now</label>
+    <input type="file" id="imageUpload" accept="image/*" capture="camera" style="display: none">
+  </a>
+
+  <a href="results.html"><button>See Results!</button></a>
+  <script src="script.js"></script>
 </body>
 </html>

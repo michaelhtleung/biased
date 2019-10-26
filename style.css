@@ -1,13 +1,18 @@
 body {
   background-color: #EFEA8E;
-  max-width: 414px;
+  max-width: 370px;
   font-family: 'Lato', sans-serif;
-  margin: auto 80px;
+  margin: 20px;
 }
 
 h1{
   margin: 80px auto;
   font-size: 48px;
+}
+
+h2 {
+  font-size: 36px;
+  text-align: center;
 }
 
 p {
@@ -20,7 +25,18 @@ p {
   font-style: italic;
 }
 
-button {
+.results {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 60px auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+label, button {
   background-color: #F17105;
   text-align: left;
   border: none;
@@ -29,8 +45,9 @@ button {
   color: white;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   font-family: 'Lato', sans-serif;
+  font-size: 16px;
 }
 
-button:hover {
+label:hover, button:hover {
   cursor: pointer;
 }
