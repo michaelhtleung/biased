@@ -12,13 +12,36 @@
   <p>Companies claim to be saving the world in one way or another. Scan a logo today to find the truth of their bias.</p>
 
   <br>
-
-  <a href="results.html">
+<a href="results.html">
     <label for="imageUpload">Scan now</label>
     <input type="file" id="imageUpload" accept="image/*" capture="camera" style="display: none">
   </a>
 
   <a href="results.html"><button>See Results!</button></a>
   <script src="script.js"></script>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-analytics.js"></script>
+
+  <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+          apiKey: "AIzaSyAj-dMoGDQVJNjQE3042RowBnmy3DLklc0",
+          authDomain: "yhack2019-d0dff.firebaseapp.com",
+          databaseURL: "https://yhack2019-d0dff.firebaseio.com",
+          projectId: "yhack2019-d0dff",
+          storageBucket: "yhack2019-d0dff.appspot.com",
+          messagingSenderId: "270946571259",
+          appId: "1:270946571259:web:35357e27162da02913b15e",
+          measurementId: "G-ZF035ZH907"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+  </script>
 </body>
 </html>
