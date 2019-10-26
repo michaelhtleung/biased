@@ -40,12 +40,13 @@ p {
 
 .results img {
   width: 33%;
+  margin: auto 10%;
 }
 
 .results p {
   font-size: 3em;
   float: right;
-  padding: 10px;
+  padding: 15px;
   margin: 0;
 }
 
@@ -53,7 +54,7 @@ a {
   text-decoration: none;
 }
 
-label {
+label, .reset-button {
   background: rgb(233,105,14);
   background: linear-gradient(90deg, rgba(233,105,14,1) 0%, rgba(242,173,32,1) 100%);
   text-align: left;
@@ -92,6 +93,7 @@ label img {
 .search-container input[type=text] {
   padding: 7px;
   font-size: 1.25em;
+  font-family: 'Lato', sans-serif;
   border: none;
   width: 80%;
   margin-left: 2%;
