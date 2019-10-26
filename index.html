@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bias</title>
   <link rel="stylesheet" type="text/css" href="style.css">
   <link href="https://fonts.googleapis.com/css?family=Lato:400,900i&display=swap" rel="stylesheet">
@@ -12,13 +13,12 @@
   <p>Companies claim to be saving the world in one way or another. Scan a logo today to find the truth of their bias.</p>
 
   <br>
-<a href="results.html">
-    <label for="imageUpload">Scan now</label>
-    <input type="file" id="imageUpload" accept="image/*" capture="camera" style="display: none">
-  </a>
+  <br>
 
-  <a href="results.html"><button>See Results!</button></a>
-  <script src="script.js"></script>
+  <label for="imageUpload">Scan now<img src="img/camera.png"></label>
+  <input type="file" id="imageUpload" accept="image/*" capture="camera" style="display: none">
+
+  <script src="index.js"></script>
 
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
