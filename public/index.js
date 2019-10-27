@@ -8,5 +8,4 @@ function buttonPressed (){
 
 function updateValue(e) {
   console.log("Inputted!");
-  window.location.href = "results.html";
 }
