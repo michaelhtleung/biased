@@ -18,9 +18,6 @@
   <label for="imageUpload">Scan now<img src="img/camera.png"></label>
   <input type="file" id="imageUpload" accept="image/*" capture="camera" style="display: none">
 
-  <!-- example -->
-  <input type="file" accept="image/*" capture="camera" id="cameraInput">
-
   <br>
   <br>
   <br>
@@ -59,7 +56,7 @@
       firebase.analytics();
 
       let storageRef = firebase.storage().ref('photos/myPictureName');
-      let fileUpload = document.getElementById("cameraInput");
+      let fileUpload = document.getElementById("imageUpload");
 
       fileUpload.addEventListener('change', function(evt) {
         let firstFile = evt.target.files[0] // upload the first file only
