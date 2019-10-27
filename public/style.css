@@ -1,18 +1,22 @@
 html {
     font-size: 16px;
     max-width: 417px;
-    margin: auto;
+    margin: 0 auto;
   }
 
 body {
   background-color: #EFEA8E;
-  max-width: 85%;
   font-family: 'Lato', sans-serif;
-  margin: 3em auto;
+  margin: 0 0 70px 0;
+}
+
+.body-container {
+  max-width: 85%;
+  margin: 0 auto;
 }
 
 h1{
-  margin: 1.75em auto;
+  margin: 1.5em auto;
   font-size: 3em;
 }
 
@@ -22,38 +26,52 @@ h2 {
 }
 
 p {
-  font-size: 1.5em;
+  font-size: 1.3em;
 }
 
 .title{
+  padding: 15px 30px 20px 30px;
+  background-image: url("img/bg-title.png");
+  background-repeat: no-repeat;
+  background-position: center top;
   font-size: 1.25em;
   font-weight: 900;
-  font-style: italic;
+}
+
+.title p {
+ margin: 0 auto auto auto;
+ color: white;
 }
 
 .results-box {
   border: 1px solid black;
   border-radius: 5px;
   padding: 25px 25px;
-  margin: 60px auto;
+  margin: 50px auto;
 }
 
 .results img {
   width: 33%;
+  margin: auto 10%;
 }
 
 .results p {
   font-size: 3em;
   float: right;
-  padding: 10px;
+  padding: 20px 15px;
   margin: 0;
+}
+
+h3 {
+  margin-left: 25px;
+  font-size: 1.4em;
 }
 
 a {
   text-decoration: none;
 }
 
-label {
+label, .reset-button {
   background: rgb(233,105,14);
   background: linear-gradient(90deg, rgba(233,105,14,1) 0%, rgba(242,173,32,1) 100%);
   text-align: left;
@@ -67,12 +85,16 @@ label {
   margin: 40px 10%;
 }
 
+.reset-button {
+  text-align: center;
+}
+
 label:hover, button:hover {
   cursor: pointer;
 }
 
 label img {
-  padding-left: 100px;
+  padding-left: 50px;
 }
 
 .container {
@@ -92,15 +114,16 @@ label img {
 .search-container input[type=text] {
   padding: 7px;
   font-size: 1.25em;
+  font-family: 'Lato', sans-serif;
   border: none;
-  width: 80%;
+  width: 75%;
   margin-left: 2%;
 }
 
 .search-container button {
-  padding: 6px 6px;
-  width: 10%;
-  margin-right: 3%;
+  padding: 8px 6px 6px 6px;
+  width: 40px;
+  max-height: 40px;
   background: rgb(233,105,14);
   background: linear-gradient(90deg, rgba(233,105,14,1) 0%, rgba(242,173,32,1) 100%);
   font-size: 17px;
