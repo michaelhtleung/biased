@@ -37,10 +37,14 @@ exports.identifyLogo = functions.storage.object().onFinalize(async (object) => {
  crawl(company);
 });
 
+crawl("google");
+
 function saveParagraphs(name, paragraphs, callback){
  db.collection('company').doc("TEST").set({
-  name: name,
-  paragraphs: paragraphs // array of strings
+  name: 'CCC',
+  paragraphs: 'DDD' // array of strings
+  // name: name,
+  // paragraphs: paragraphs // array of strings
  }).then( () => {
   console.log("Paragraphs saved");
   return callback();
@@ -72,9 +76,9 @@ function crawl(companyName) {
 }
 
 function checkForKeywords(paragraphArray) {
+ let foundKeywordsArray = new Array();
  for (var i = 0; i < paragraphArray.length; i++) {
   for (var j = 0; j < keywordArray.length; j++) {
-   let foundKeywordsArray = new Array();
    if ((paragraphArray[i].includes(keywordArray[j]) || (paragraphArray[i].includes(keywordArray[j].toLowerCase())))) {
     foundKeywordsArray = paragraphArray[i]
     console.log(foundKeywordsArray + "\n")

@@ -60,18 +60,18 @@
       let firstFile = evt.target.files[0]; // upload the first file only
       let uploadTask = storageRef.put(firstFile).then( () => {
 
-        db.collection('company').doc("TEST").set({
-          name: 'AAA',
-          paragraphs: 'BBB' // array of strings
-        });
+        // db.collection('company').doc("TEST").set({
+        //   name: 'AAA',
+        //   paragraphs: 'BBB' // array of strings
+        // });
 
-        // db.collection("company").doc("TEST")
-        //   .onSnapshot(function(doc) {
-        //     console.log("Current data.data(): ", doc.data());
-        //     if (doc.data() && doc.data().paragraphs && doc.data().paragraphs.length){
-        //       window.location.href = "results.html";
-        //     }
-        //   });
+        db.collection("company").doc("TEST")
+          .onSnapshot(function(doc) {
+            console.log("Current data.data(): ", doc.data());
+            if (doc.data() && doc.data().paragraphs && doc.data().paragraphs.length){
+              window.location.href = "results.html";
+            }
+          });
       });
     });
   </script>

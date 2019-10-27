@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@google-cloud/vision": "^1.5.0",
+    "crawler": "^1.2.1",
     "escaping": "^0.1.2"
   }
 }
