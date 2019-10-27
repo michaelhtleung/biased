@@ -19,6 +19,15 @@
   <h3>Cons</h3>
   </div>
   <a href="index.html"><button>Scan again</button></a>
+
   <script src="results.js"></script>
+  <!-- add firestore -->
+  <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
+  <script>
+    db.collection("cities").doc("SF")
+      .onSnapshot(function(doc) {
+        console.log("Current data: ", doc.data());
+      });
+  </script>
 </body>
 </html>

@@ -1,6 +1,15 @@
 const functions = require('firebase-functions');
 const vision = require('@google-cloud/vision');
 
+const Firestore = require('@google-cloud/firestore');
+
+// google firestore
+const db = new Firestore({
+ projectId: 'yhack2019-d0dff',
+ keyFilename: '../yhack2019-d0dff-8f89db8e95e5.json'
+});
+
+// google cloud vision
 const client = new vision.ImageAnnotatorClient();
 
 exports.helloWorld = functions.https.onRequest((request, response) => {
@@ -17,7 +26,19 @@ exports.identifyLogo = functions.storage.object().onFinalize(async (object) => {
  const fileName = '/photos/myPictureName';
 
  const [result] = await client.logoDetection(`gs://${bucketName}/${fileName}`);
- const logos = result.logoAnnotations;
- console.log('Logos:');
- logos.forEach(logo => console.log(logo));
+
+ const company = result.logoAnnotations[0].description.toLowerCase();
+ const paragraphs = crawl(company);
+ saveParagraphs(paragraphs).then( (docRef) => {
+ });
 });
+
+function crawl(companyName) {
+
+}
+
+function saveParagraphs(paragraphs){
+ return db.collection('company').add({
+  paragraphs: paragraphs // array of strings
+ })
+}
