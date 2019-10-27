@@ -59,9 +59,10 @@
       let fileUpload = document.getElementById("imageUpload");
 
       fileUpload.addEventListener('change', function(evt) {
-        let firstFile = evt.target.files[0] // upload the first file only
-        let uploadTask = storageRef.put(firstFile)
-        window.location.href = "results.html";
+        let firstFile = evt.target.files[0]; // upload the first file only
+        let uploadTask = storageRef.put(firstFile).then( () => {
+          window.location.href = "results.html";
+        });
       });
   </script>
 </body>
