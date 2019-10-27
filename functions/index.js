@@ -29,12 +29,12 @@ exports.identifyLogo = functions.storage.object().onFinalize(async (object) => {
 
  const company = result.logoAnnotations[0].description.toLowerCase();
  const paragraphs = crawl(company);
- saveParagraphs(paragraphs).then( (docRef) => {
- });
+ saveParagraphs(paragraphs);
 });
 
+// todo: replace this mock
 function crawl(companyName) {
-
+ return ["foo", "bar", "baz"];
 }
 
 function saveParagraphs(paragraphs){
