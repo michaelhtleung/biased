@@ -1,18 +1,22 @@
 html {
     font-size: 16px;
     max-width: 417px;
-    margin: auto;
+    margin: 0 auto;
   }
 
 body {
   background-color: #EFEA8E;
-  max-width: 85%;
   font-family: 'Lato', sans-serif;
-  margin: 3em auto;
+  margin: 0 0 70px 0;
+}
+
+.body-container {
+  max-width: 85%;
+  margin: 0 auto;
 }
 
 h1{
-  margin: 1.75em auto;
+  margin: 1.5em auto;
   font-size: 3em;
 }
 
@@ -26,16 +30,25 @@ p {
 }
 
 .title{
+  padding: 15px 30px 20px 30px;
+  background-image: url("img/bg-title.png");
+  background-repeat: no-repeat;
+  background-position: center top;
   font-size: 1.25em;
   font-weight: 900;
   font-style: italic;
+}
+
+.title p {
+ margin: 0 auto auto auto;
+ color: white;
 }
 
 .results-box {
   border: 1px solid black;
   border-radius: 5px;
   padding: 25px 25px;
-  margin: 60px auto;
+  margin: 50px auto;
 }
 
 .results img {
@@ -46,7 +59,7 @@ p {
 .results p {
   font-size: 3em;
   float: right;
-  padding: 15px;
+  padding: 20px 15px;
   margin: 0;
 }
 
