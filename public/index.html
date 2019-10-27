@@ -18,6 +18,9 @@
   <label for="imageUpload">Scan now<img src="img/camera.png"></label>
   <input type="file" id="imageUpload" accept="image/*" capture="camera" style="display: none">
 
+  <!-- example -->
+  <input type="file" accept="image/*" capture="camera" id="cameraInput">
+
   <br>
   <br>
   <br>
@@ -25,12 +28,15 @@
   <div class="search-container">
       <input type="text" placeholder="Search.." name="search">
       <button type="submit"><img src="img/search.png"></button>
-</div>
+  </div>
 
   <script src="index.js"></script>
 
   <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <!-- add firebase -->
   <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+  <!-- add cloud storage-->
+  <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-storage.js"></script>
 
   <!-- TODO: Add SDKs for Firebase products that you want to use
        https://firebase.google.com/docs/web/setup#available-libraries -->
@@ -51,6 +57,14 @@
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
+
+      let storageRef = firebase.storage().ref('photos/myPictureName');
+      let fileUpload = document.getElementById("cameraInput");
+
+      fileUpload.addEventListener('change', function(evt) {
+        let firstFile = evt.target.files[0] // upload the first file only
+        let uploadTask = storageRef.put(firstFile)
+      });
   </script>
 </body>
 </html>
