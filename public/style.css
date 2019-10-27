@@ -36,7 +36,6 @@ p {
   background-position: center top;
   font-size: 1.25em;
   font-weight: 900;
-  font-style: italic;
 }
 
 .title p {
@@ -86,12 +85,16 @@ label, .reset-button {
   margin: 40px 10%;
 }
 
+.reset-button {
+  text-align: center;
+}
+
 label:hover, button:hover {
   cursor: pointer;
 }
 
 label img {
-  padding-left: 100px;
+  padding-left: 50px;
 }
 
 .container {
@@ -113,14 +116,14 @@ label img {
   font-size: 1.25em;
   font-family: 'Lato', sans-serif;
   border: none;
-  width: 80%;
+  width: 75%;
   margin-left: 2%;
 }
 
 .search-container button {
-  padding: 6px 6px;
-  width: 10%;
-  margin-right: 3%;
+  padding: 8px 6px 6px 6px;
+  width: 40px;
+  max-height: 40px;
   background: rgb(233,105,14);
   background: linear-gradient(90deg, rgba(233,105,14,1) 0%, rgba(242,173,32,1) 100%);
   font-size: 17px;

@@ -1,7 +1,5 @@
 let content = document.getElementById("resultsContainer");
 let loadingGif = document.getElementById("loadingGif");
-let image = document.getElementById("result-icon");
-let grade = document.getElementById("grade");
 let title = document.getElementById("result-title");
 let subtitle = document.getElementById("keyword");
 let keyContent = document.getElementById("result-content");
@@ -31,9 +29,8 @@ function setTimer(){
 function checkResults(){
   if (results) {
     console.log("it's true!");
-    image.src = "img/0.png";
-    grade.innerHTML = "82%";
-    title.innerHTML = "[company title here]";
+
+    title.innerHTML = "[company title]";
     let i, j, x = "";
     for (i in searchResults.keywords) {
       x += "<h3>" + searchResults.keywords[i].name + "</h3>";
