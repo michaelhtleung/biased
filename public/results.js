@@ -43,6 +43,7 @@ function checkResults(){
     }
     document.getElementById("result-content").innerHTML = x;
     document.getElementById("result-content").style.fontSize = "12px";
+    document.getElementById("result-content").style.marginBottom = "4px";
     content.style.display = "initial";
     loadingGif.style.display = "none";
     clearInterval(myTimer);
