@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bias</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,900i&display=swap" rel="stylesheet">
+</head>
+<body>
+  <p class="title">BIAS</p>
+  <h1>Find out what brands really care about</h1>
+  <p>Companies claim to be saving the world in one way or another. Scan a logo today to find the truth of their bias.</p>
+
+  <br>
+  <br>
+
+  <label for="imageUpload">Scan now<img src="img/camera.png"></label>
+  <input type="file" id="imageUpload" accept="image/*" capture="camera" style="display: none">
+
+  <br>
+  <br>
+  <br>
+
+  <div class="search-container">
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit"><img src="img/search.png"></button>
+  </div>
+
+  <script src="index.js"></script>
+<!--  <script src="secrets.js"></script>-->
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <!-- add firebase -->
+  <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+  <!-- add cloud storage-->
+  <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-storage.js"></script>
+  <!-- add firestore -->
+  <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyAj-dMoGDQVJNjQE3042RowBnmy3DLklc0",
+      authDomain: "yhack2019-d0dff.firebaseapp.com",
+      databaseURL: "https://yhack2019-d0dff.firebaseio.com",
+      projectId: "yhack2019-d0dff",
+      storageBucket: "yhack2019-d0dff.appspot.com",
+      messagingSenderId: "270946571259",
+      appId: "1:270946571259:web:35357e27162da02913b15e",
+      measurementId: "G-ZF035ZH907"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    var db = firebase.firestore();
+
+      let storageRef = firebase.storage().ref('photos/myPictureName');
+      let fileUpload = document.getElementById("imageUpload");
+      fileUpload.addEventListener('change', function(evt) {
+        let firstFile = evt.target.files[0]; // upload the first file only
+        let uploadTask = storageRef.put(firstFile).then( () => {
+          window.location.href = "results.html";
+        });
+      });
+  </script>
+</body>
+</html>

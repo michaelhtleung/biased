@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Results</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,900i&display=swap" rel="stylesheet">
+</head>
+<body>
+  <p class="title">BIAS</p>
+  <img class="loading-gif" id="loadingGif" src="img/loading.gif">
+  <div id="container">
+  <div class="results-box">
+    <span class="results"><img id="result-icon" src="img/result.jpg"></span>
+    <span class="results"><p class="grade" id="grade">XX%</a></span>
+  </div>
+  <h2 id="result-title">Placeholder Title</h2>
+  <h3>Pros</h3>
+  <h3>Cons</h3>
+  </div>
+  <a href="index.html"><button>Scan again</button></a>
+
+  <script src="results.js"></script>
+<!--  <script src="secrets.js"></script>-->
+
+  <!-- add firebase -->
+  <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+  <!-- add cloud storage-->
+  <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-storage.js"></script>
+  <!-- add firestore -->
+  <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyAj-dMoGDQVJNjQE3042RowBnmy3DLklc0",
+      authDomain: "yhack2019-d0dff.firebaseapp.com",
+      databaseURL: "https://yhack2019-d0dff.firebaseio.com",
+      projectId: "yhack2019-d0dff",
+      storageBucket: "yhack2019-d0dff.appspot.com",
+      messagingSenderId: "270946571259",
+      appId: "1:270946571259:web:35357e27162da02913b15e",
+      measurementId: "G-ZF035ZH907"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    var db = firebase.firestore();
+    db.collection("company").doc("xuttRrdgZa1NC61litvt")
+      .onSnapshot(function(doc) {
+        console.log("Current data: ", doc);
+        console.log("Current data.data(): ", doc.data());
+      });
+  </script>
+</body>
+</html>
