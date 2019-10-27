@@ -46,7 +46,7 @@
     firebase.initializeApp(firebaseConfig);
 
     var db = firebase.firestore();
-    db.collection("company").doc("xuttRrdgZa1NC61litvt")
+    db.collection("company").doc("TEST")
       .onSnapshot(function(doc) {
         console.log("Current data: ", doc);
         console.log("Current data.data(): ", doc.data());
