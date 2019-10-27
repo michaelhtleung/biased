@@ -32,29 +32,40 @@
 </div>
 
   <script src="index.js"></script>
+<!--  <script src="secrets.js"></script>-->
 
   <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <!-- add firebase -->
   <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
-
-  <!-- TODO: Add SDKs for Firebase products that you want to use
-       https://firebase.google.com/docs/web/setup#available-libraries -->
-  <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-analytics.js"></script>
+  <!-- add cloud storage-->
+  <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-storage.js"></script>
+  <!-- add firestore -->
+  <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
 
   <script>
-      // Your web app's Firebase configuration
-      var firebaseConfig = {
-          apiKey: "AIzaSyAj-dMoGDQVJNjQE3042RowBnmy3DLklc0",
-          authDomain: "yhack2019-d0dff.firebaseapp.com",
-          databaseURL: "https://yhack2019-d0dff.firebaseio.com",
-          projectId: "yhack2019-d0dff",
-          storageBucket: "yhack2019-d0dff.appspot.com",
-          messagingSenderId: "270946571259",
-          appId: "1:270946571259:web:35357e27162da02913b15e",
-          measurementId: "G-ZF035ZH907"
-      };
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-      firebase.analytics();
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyAj-dMoGDQVJNjQE3042RowBnmy3DLklc0",
+      authDomain: "yhack2019-d0dff.firebaseapp.com",
+      databaseURL: "https://yhack2019-d0dff.firebaseio.com",
+      projectId: "yhack2019-d0dff",
+      storageBucket: "yhack2019-d0dff.appspot.com",
+      messagingSenderId: "270946571259",
+      appId: "1:270946571259:web:35357e27162da02913b15e",
+      measurementId: "G-ZF035ZH907"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    var db = firebase.firestore();
+
+      let storageRef = firebase.storage().ref('photos/myPictureName');
+      let fileUpload = document.getElementById("imageUpload");
+      fileUpload.addEventListener('change', function(evt) {
+        let firstFile = evt.target.files[0]; // upload the first file only
+        let uploadTask = storageRef.put(firstFile).then( () => {
+          window.location.href = "results.html";
+        });
+      });
   </script>
 </body>
 </html>

@@ -1,0 +1,17 @@
+- user attaches photo
+- client event listener triggers
+- client uploads photo to cloud storage
+
+A:
+- server listens to cloud storage change
+- server calls GCP CV API 
+- server calls web crawler to receive paragraphs
+- server writes the paragraphs to firestore
+- client reads the paragraphs from firestore and polls for it before loading the DOM
+- how does the server send paragraphs to client?
+
+B:
+- client calls GCP CV API, but how?
+- client calls web crawler to receive paragraphs
+
+- client renders paragraphs
