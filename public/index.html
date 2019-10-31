@@ -58,14 +58,26 @@
     firebase.initializeApp(firebaseConfig);
     var db = firebase.firestore();
 
-      let storageRef = firebase.storage().ref('photos/myPictureName');
-      let fileUpload = document.getElementById("imageUpload");
-      fileUpload.addEventListener('change', function(evt) {
-        let firstFile = evt.target.files[0]; // upload the first file only
-        let uploadTask = storageRef.put(firstFile).then( () => {
-          window.location.href = "results.html";
-        });
+    let storageRef = firebase.storage().ref('photos/myPictureName');
+    let fileUpload = document.getElementById("imageUpload");
+    fileUpload.addEventListener('change', function(evt) {
+      let firstFile = evt.target.files[0]; // upload the first file only
+      let uploadTask = storageRef.put(firstFile).then( () => {
+
+        // db.collection('company').doc("TEST").set({
+        //   name: 'AAA',
+        //   paragraphs: 'BBB' // array of strings
+        // });
+
+        db.collection("company").doc("TEST")
+          .onSnapshot(function(doc) {
+            console.log("Current data.data(): ", doc.data());
+            if (doc.data() && doc.data().paragraphs && doc.data().paragraphs.length){
+              window.location.href = "results.html";
+            }
+          });
       });
+    });
   </script>
 </body>
 </html>
