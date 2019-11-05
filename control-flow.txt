@@ -14,4 +14,8 @@ B:
 - client calls GCP CV API, but how?
 - client calls web crawler to receive paragraphs
 
+C:
+- in the cloud storage event handler, make an AJAX HTTP call for the company summaries
+- in the AJAX event handler, change the page innerHtml and load the data in dynamically
+
 - client renders paragraphs

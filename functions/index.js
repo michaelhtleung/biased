@@ -1,7 +1,12 @@
 const functions = require('firebase-functions');
 const vision = require('@google-cloud/vision');
-
 const Firestore = require('@google-cloud/firestore');
+const Busboy = require('busboy');
+const inspect = require('util').inspect;
+
+const cors = require('cors')({
+ origin: true,
+});
 
 // google firestore
 const db = new Firestore({
@@ -18,26 +23,30 @@ var keywordArray = ["Animal testing", "Factory farming", "Animal rights", "Cruel
  "Anti-social", "Finance", "Boycott", "Controversial", "Technology", "Political", "Ethos", "Product",
  "Sustainability", "Organic", "Fair-trade", "Energy", "Efficient", "Vegan", "Vegetarian"];
 
-exports.helloWorld = functions.https.onRequest((request, response) => {
- response.send("Hello from Firebase!");
-});
-
-exports.transferImage = functions.https.onRequest((req, res) => {
- console.log("===== IMAGE =====");
- res.send("Image received!");
+exports.getSummary = functions.https.onRequest((req, res) => {
+ return cors(req, res, () => {
+  res.send("get summary");
+ });
 });
 
 exports.identifyLogo = functions.storage.object().onFinalize(async (object) => {
  const bucketName = 'yhack2019-d0dff.appspot.com';
- const fileName = '/photos/myPictureName';
+ const fileName = req.query.filePath; 
 
  const [result] = await client.logoDetection(`gs://${bucketName}/${fileName}`);
 
  const company = result.logoAnnotations[0].description.toLowerCase();
- crawl(company);
+ res.send(company);
+ // crawl(company);
 });
 
-crawl("google");
+exports.helloWorld = functions.https.onRequest((req, res) => {
+ return cors(req, res, () => {
+  for (var i = 0; i < 10; i++) {
+   console.log(i);
+  }
+ });
+});
 
 function saveParagraphs(name, paragraphs, callback){
  db.collection('company').doc("TEST").set({

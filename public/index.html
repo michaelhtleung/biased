@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css?family=Lato:400,900i&display=swap" rel="stylesheet">
 </head>
 <body>
+
   <div class="title">
     <p>biased</p>
   </div>
@@ -56,26 +57,27 @@
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
-    var db = firebase.firestore();
 
     let storageRef = firebase.storage().ref('photos/myPictureName');
     let fileUpload = document.getElementById("imageUpload");
     fileUpload.addEventListener('change', function(evt) {
       let firstFile = evt.target.files[0]; // upload the first file only
       let uploadTask = storageRef.put(firstFile).then( () => {
-
-        // db.collection('company').doc("TEST").set({
-        //   name: 'AAA',
-        //   paragraphs: 'BBB' // array of strings
-        // });
-
-        db.collection("company").doc("TEST")
-          .onSnapshot(function(doc) {
-            console.log("Current data.data(): ", doc.data());
-            if (doc.data() && doc.data().paragraphs && doc.data().paragraphs.length){
-              window.location.href = "results.html";
-            }
-          });
+      //  make ajax call to cloud function here
+        var ajax = new XMLHttpRequest();
+        ajax.addEventListener("load", (event) => {
+          // console logs here get printed in the client-side browser
+          console.log('callback invoked');
+          console.log(event);
+          console.log(event.target.responseText);
+          // dynamically load in data to results.html
+          //  change a flag in results.html to hide the loading screen
+        }, false);
+        let url = 'https://us-central1-yhack2019-d0dff.cloudfunctions.net/getSummary';
+        let filepath = '/photos/myPictureName';
+        ajax.open("GET", url + "?filepath=" + filepath);
+        ajax.send();
+        // window.location.href = "results.html";
       });
     });
   </script>
