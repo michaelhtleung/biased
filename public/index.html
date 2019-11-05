@@ -77,7 +77,8 @@
       // ajax.open("GET", "http://localhost:5001/yhack2019-d0dff/us-central1/helloWorld");
 
       // ajax.open("POST", "http://localhost:8080");
-      ajax.open("POST", "http://localhost:5001/yhack2019-d0dff/us-central1/identifyLogo");
+      // ajax.open("POST", "http://localhost:5001/yhack2019-d0dff/us-central1/identifyLogo");
+      ajax.open("POST", "https://us-central1-yhack2019-d0dff.cloudfunctions.net/recognizeLogo");
 
       // window.location.href = "results.html";
       ajax.send(formdata);

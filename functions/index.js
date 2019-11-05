@@ -25,37 +25,47 @@ exports.helloWorld = functions.https.onRequest((req, res) => {
  });
 });
 
-exports.identifyLogo = functions.https.onRequest((req, res) => {
+exports.recognizeLogo = functions.https.onRequest((req, res) => {
  return cors(req, res, () => {
   // console logs here get printed in the server-side terminal 
   console.log("===== LOGO =====");
 // google cloud vision
   const client = new vision.ImageAnnotatorClient();
-  const request = req.body;
-
-  const busboy = new Busboy({headers: req.headers});
-  busboy.on('file', (fieldname, file, filename) => {
-    file.on('data', (data) => {
-    	// res.send(req.headers);
-     res.send(data);
-    });
-  });
-  busboy.end(req.rawBody);
-
-  // client
-  //   .logoDetection(request)
-  //   .then(response => {
-  //   	res.send(response);
-      // const company = response.logoAnnotations[0].description.toLowerCase();
-// /*      const paragraphs = crawl(company);
-//       saveParagraphs(paragraphs);*/
-//       res.send(company);
-//     })
-//     .catch(error => {
-//         console.log("ERROR");
-//         console.log(error);
-//         res.send(error);
-//     });
+  const request = req.rawBody;
+     client
+         .logoDetection(request)
+         .then(response => {
+             const company = response.logoAnnotations[0].description.toLowerCase();
+             /*      const paragraphs = crawl(company);
+				   saveParagraphs(paragraphs);*/
+             res.send(company);
+         })
+         .catch(error => {
+             console.log("ERROR");
+             console.log(error);
+             res.send(error);
+         });
+  // const busboy = new Busboy({headers: req.headers});
+  // busboy.on('file', (fieldname, file, filename) => {
+  //   file.on('data', (data) => {
+  //    // res.send(data);
+  //    const request = data;
+  //    client
+  //       .logoDetection(request)
+  //       .then(response => {
+  //        const company = response.logoAnnotations[0].description.toLowerCase();
+  //        /*      const paragraphs = crawl(company);
+  //              saveParagraphs(paragraphs);*/
+  //        res.send(company);
+  //       })
+  //       .catch(error => {
+  //         console.log("ERROR");
+  //         console.log(error);
+  //         res.send(error);
+  //       });
+  //   });
+  // });
+  // busboy.end(req.rawBody);
  }); // cors
 }); // identifyLogo
 
