@@ -25,19 +25,23 @@ var keywordArray = ["Animal testing", "Factory farming", "Animal rights", "Cruel
 
 exports.getSummary = functions.https.onRequest((req, res) => {
  return cors(req, res, () => {
-  res.send("get summary");
+  const bucketName = 'yhack2019-d0dff.appspot.com';
+  const fileName = req.query.filepath;
+  const request = `gs://${bucketName}/${fileName}`;
+
+  // res.send("bye");
+  client
+     .logoDetection(request)
+     .then(response => {
+      res.send(response);
+      // const company = response.logoAnnotations[0].description.toLowerCase();
+      //  res.send(company);
+       // crawl(company);	
+     })
+     .catch(error => {
+       res.send(error);
+     });
  });
-});
-
-exports.identifyLogo = functions.storage.object().onFinalize(async (object) => {
- const bucketName = 'yhack2019-d0dff.appspot.com';
- const fileName = req.query.filePath; 
-
- const [result] = await client.logoDetection(`gs://${bucketName}/${fileName}`);
-
- const company = result.logoAnnotations[0].description.toLowerCase();
- res.send(company);
- // crawl(company);
 });
 
 exports.helloWorld = functions.https.onRequest((req, res) => {
