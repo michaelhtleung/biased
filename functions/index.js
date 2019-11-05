@@ -3,6 +3,10 @@ const vision = require('@google-cloud/vision');
 
 const Firestore = require('@google-cloud/firestore');
 
+const cors = require('cors')({
+ origin: true,
+});
+
 // google firestore
 const db = new Firestore({
  projectId: 'yhack2019-d0dff',
@@ -12,8 +16,10 @@ const db = new Firestore({
 // google cloud vision
 const client = new vision.ImageAnnotatorClient();
 
-exports.helloWorld = functions.https.onRequest((request, response) => {
- response.send("Hello from Firebase!");
+exports.helloWorld = functions.https.onRequest((req, res) => {
+ return cors(req, res, () => {
+  res.send("Hello from Firebase!");
+ });
 });
 
 exports.transferImage = functions.https.onRequest((req, res) => {
