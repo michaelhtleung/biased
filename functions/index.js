@@ -33,10 +33,19 @@ exports.getSummary = functions.https.onRequest((req, res) => {
   client
      .logoDetection(request)
      .then(response => {
-      res.send(response);
-      // const company = response.logoAnnotations[0].description.toLowerCase();
-      //  res.send(company);
-       // crawl(company);	
+     	// res.send(response);
+       let obj = JSON.parse(response);
+       // todo: figure out why this doesn't pluck out the company name and returns empty obj instead
+       // let company = obj;
+       // company = JSON.stringify(obj);
+       // let company = obj[0];
+       // let company = obj[0].logoAnnotations;
+       // let company = obj[0].logoAnnotations[0];
+       // let company = obj[0].logoAnnotations[0].description;
+       // let company = obj[0].logoAnnotations[0].description.toLowerCase();
+      let company = JSON.stringify(obj[0].logoAnnotations[0].description.toLowerCase());
+      res.send(company);
+      //  res.send( crawl(company) );	
      })
      .catch(error => {
        res.send(error);
@@ -81,7 +90,8 @@ function crawl(companyName) {
     paragraphArray = $("p").text().split("\n")
    }
    let curated_paragraphs = checkForKeywords(paragraphArray);
-   saveParagraphs(companyName, curated_paragraphs, done);
+   return curated_paragraphs;
+   // saveParagraphs(companyName, curated_paragraphs, done);
   }
  });
  // Queue just one URL, with default callback

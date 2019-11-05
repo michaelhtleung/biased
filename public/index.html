@@ -70,6 +70,9 @@
           console.log('callback invoked');
           console.log(event);
           console.log(event.target.responseText);
+          // var obj = JSON.parse(event.target.responseText);
+          // var company = obj[0].logoAnnotations[0].description.toLowerCase();
+
           // dynamically load in data to results.html
           //  change a flag in results.html to hide the loading screen
         }, false);
