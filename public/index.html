@@ -8,15 +8,6 @@
   <link href="https://fonts.googleapis.com/css?family=Lato:400,900i&display=swap" rel="stylesheet">
 </head>
 <body>
-  <script>
-    function completeHandler(event) {
-      console.log(event);
-    }
-    var ajax = new XMLHttpRequest();
-    ajax.addEventListener("load", completeHandler, false);
-    ajax.open("GET", "http://localhost:5001/yhack2019-d0dff/us-central1/helloWorld");
-    ajax.send();
-  </script>
 
   <div class="title">
     <p>biased</p>
@@ -68,14 +59,29 @@
     firebase.initializeApp(firebaseConfig);
     var db = firebase.firestore();
 
-      let storageRef = firebase.storage().ref('photos/myPictureName');
-      let fileUpload = document.getElementById("imageUpload");
-      fileUpload.addEventListener('change', function(evt) {
-        let firstFile = evt.target.files[0]; // upload the first file only
-        let uploadTask = storageRef.put(firstFile).then( () => {
-          window.location.href = "results.html";
-        });
-      });
+    let fileUpload = document.getElementById("imageUpload");
+    fileUpload.addEventListener('change', function(event) {
+      let file = event.target.files[0]; // upload the first file only
+      var formdata = new FormData();
+      formdata.append("file1", file);
+
+      var ajax = new XMLHttpRequest();
+      ajax.addEventListener("load", (event) => {
+        // console logs here get printed in the client-side browser
+        console.log('callback invoked');
+        console.log(event);
+        console.log(event.target.responseText);
+        //  change a flag in results.html to hide the loading screen
+      }, false);
+      // ajax.open("GET", "http://localhost:8080");
+      // ajax.open("GET", "http://localhost:5001/yhack2019-d0dff/us-central1/helloWorld");
+
+      // ajax.open("POST", "http://localhost:8080");
+      ajax.open("POST", "http://localhost:5001/yhack2019-d0dff/us-central1/identifyLogo");
+
+      // window.location.href = "results.html";
+      ajax.send(formdata);
+    });
   </script>
 </body>
 </html>
