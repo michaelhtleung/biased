@@ -6,7 +6,7 @@ Consumers can then decide which companies to support through their purchases.
 
 ## Try It Out!
 ![QR Code Image](https://github.com/michaelhtleung/yhack2019/blob/master/public/img/try-it-out.png)
-- [Click here on mobile](bit.ly/32QeaJr)
+- [Click here on mobile](https://bit.ly/32QeaJr)
 - Or scan the QR Code with your phone
 
 ## Photos
