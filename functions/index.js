@@ -3,6 +3,7 @@ const vision = require('@google-cloud/vision');
 const Firestore = require('@google-cloud/firestore');
 const Busboy = require('busboy');
 const inspect = require('util').inspect;
+const Crawler = require("crawler");
 
 const cors = require('cors')({
  origin: true,
@@ -34,11 +35,13 @@ exports.getSummary = functions.https.onRequest((req, res) => {
      .logoDetection(request)
      .then(response => {
       let company = response[0].logoAnnotations[0].description.toLowerCase();
-      res.send(company);
-      //  res.send( crawl(company) );
+      // res.send(company);
+      crawl(company, (error, result) => {
+       return res.send(result);
+      });
      })
      .catch(error => {
-       res.send(error);
+       return res.send(error);
      });
  });
 });
@@ -67,8 +70,7 @@ function saveParagraphs(name, paragraphs, callback){
  });
 }
 
-function crawl(companyName) {
- var Crawler = require("crawler");
+function crawl(companyName, smallback) {
  var c = new Crawler({
   maxConnections: 10,
   callback: function (error, res, done) {
@@ -79,8 +81,11 @@ function crawl(companyName) {
     var $ = res.$;
     paragraphArray = $("p").text().split("\n")
    }
-   let curated_paragraphs = checkForKeywords(paragraphArray);
-   return curated_paragraphs;
+   return smallback(null, 'baz');
+   // done();
+   // return 'foo';
+   // let curated_paragraphs = checkForKeywords(paragraphArray);
+   // return curated_paragraphs;
    // saveParagraphs(companyName, curated_paragraphs, done);
   }
  });
