@@ -134,3 +134,12 @@ label img {
 #loadPage, #resultsPage {
   display: none;
 }
+
+#result-title{
+  text-transform: capitalize;
+}
+
+#result-content{
+  font-size: 14px;
+  margin-bottom: 4px;
+}

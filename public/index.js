@@ -38,13 +38,14 @@ fileUpload.addEventListener('change', function(evt) {
       console.log('callback invoked');
       console.log(event);
       console.log(event.target.response);
+      let responseObj = JSON.parse(event.target.response);
 
       loadPage.style.display = 'none';
       resultsPage.style.display = 'initial';
 
       // dynamically load in data to results.html
-      title.innerHTML = event.target.response.company;
-      document.getElementById("result-content").innerHTML = event.target.response.paragraphs;
+      title.innerHTML = responseObj.company;
+      document.getElementById("result-content").innerHTML = responseObj.paragraphs;
     }, false);
     let url = 'https://us-central1-yhack2019-d0dff.cloudfunctions.net/getSummary';
     let filepath = '/photos/myPictureName';
