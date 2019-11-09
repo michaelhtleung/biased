@@ -11,17 +11,21 @@ Consumers can then decide which companies to support through their purchases.
 
 ## Photos
 Home Page
+
 ![Home Page Image](https://github.com/michaelhtleung/yhack2019/blob/master/public/img/scanPage.png)
 
 Input Photograph
+
 ![Input Photo Image](https://github.com/michaelhtleung/yhack2019/blob/master/public/img/microsoft.png)
 
 Output Results Page
+
 ![Output Results Photo Image](https://github.com/michaelhtleung/yhack2019/blob/master/public/img/scanPage.png)
 
 ## Concepts Applied
 - Cloud Services 
 - Machine Learning APIs
+
 - Web Crawling
 - Text Summarization Algorithms
 - AJAX
