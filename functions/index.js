@@ -35,7 +35,10 @@ exports.getSummary = functions.https.onRequest((req, res) => {
      .then(response => {
       let company = response[0].logoAnnotations[0].description.toLowerCase();
       crawl(company, (error, result) => {
-       return res.send(result);
+       return res.send({
+        company: company,
+        paragraphs: result
+       });
       });
      })
      .catch(error => {

@@ -39,7 +39,7 @@ fileUpload.addEventListener('change', function(evt) {
       // console logs here get printed in the client-side browser
       console.log('callback invoked');
       console.log(event);
-      console.log(event.target.responseText);
+      console.log(event.target.response);
 
       // todo: swap scanPage with loadPage here
       loadPage.style.display = 'none';
