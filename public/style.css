@@ -130,3 +130,7 @@ label img {
   border: none;
   cursor: pointer;
 }
+
+#loadPage, #resultsPage {
+  display: none;
+}

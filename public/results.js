@@ -1,5 +1,4 @@
 let content = document.getElementById("resultsContainer");
-let loadingGif = document.getElementById("loadingGif");
 let title = document.getElementById("result-title");
 let subtitle = document.getElementById("keyword");
 let keyContent = document.getElementById("result-content");
@@ -45,7 +44,6 @@ function checkResults(){
     document.getElementById("result-content").style.fontSize = "12px";
     document.getElementById("result-content").style.marginBottom = "4px";
     content.style.display = "initial";
-    loadingGif.style.display = "none";
     clearInterval(myTimer);
   } else {
     content.style.display = "none";

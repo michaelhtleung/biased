@@ -13,28 +13,40 @@
     <p>biased</p>
   </div>
   <div class="body-container">
-  <h1>Discover what brands really care about</h1>
-  <p>Companies claim to be saving the world in one way or another. Scan a logo today to find the truth of their bias.</p>
 
-  <br>
-  <br>
+  <div id="scanPage">
+    <h1>Discover what brands really care about</h1>
+    <p>Companies claim to be saving the world in one way or another. Scan a logo today to find the truth of their bias.</p>
 
-  <label for="imageUpload">Scan now<img src="img/camera.png"></label>
-  <input type="file" id="imageUpload" accept="image/*" capture="camera" style="display: none">
+    <br>
+    <br>
 
-  <br>
-  <br>
-  <br>
+    <label for="imageUpload">Scan now<img src="img/camera.png"></label>
+    <input type="file" id="imageUpload" accept="image/*" capture="camera" style="display: none">
 
-  <div class="search-container">
+    <br>
+    <br>
+    <br>
+
+    <div class="search-container">
       <input type="text" placeholder="Search.." name="search">
       <button type="submit"><img src="img/search.png"></button>
-</div>
-</div>
+    </div>
+  </div>
 
-  <script src="index.js"></script>
-<!--  <script src="secrets.js"></script>-->
+  <div id="loadPage">
+    <img class="loading-gif" id="loadingGif" src="img/loading.gif">
+  </div>
 
+  <div id="resultsPage">
+    <div id="resultsContainer">
+      <h2 id="result-title"></h2>
+      <p id="result-content"></p>
+    </div>
+    <a href="index.html"><button class="reset-button">Scan again</button></a>
+  </div>
+
+</div>
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <!-- add firebase -->
   <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
@@ -42,47 +54,6 @@
   <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-storage.js"></script>
   <!-- add firestore -->
   <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
-
-  <script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-      apiKey: "AIzaSyAj-dMoGDQVJNjQE3042RowBnmy3DLklc0",
-      authDomain: "yhack2019-d0dff.firebaseapp.com",
-      databaseURL: "https://yhack2019-d0dff.firebaseio.com",
-      projectId: "yhack2019-d0dff",
-      storageBucket: "yhack2019-d0dff.appspot.com",
-      messagingSenderId: "270946571259",
-      appId: "1:270946571259:web:35357e27162da02913b15e",
-      measurementId: "G-ZF035ZH907"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-
-    let storageRef = firebase.storage().ref('photos/myPictureName');
-    let fileUpload = document.getElementById("imageUpload");
-    fileUpload.addEventListener('change', function(evt) {
-      let firstFile = evt.target.files[0]; // upload the first file only
-      let uploadTask = storageRef.put(firstFile).then( () => {
-      //  make ajax call to cloud function here
-        var ajax = new XMLHttpRequest();
-        ajax.addEventListener("load", (event) => {
-          // console logs here get printed in the client-side browser
-          console.log('callback invoked');
-          console.log(event);
-          console.log(event.target.responseText);
-          // var obj = JSON.parse(event.target.responseText);
-          // var company = obj[0].logoAnnotations[0].description.toLowerCase();
-
-          // dynamically load in data to results.html
-          //  change a flag in results.html to hide the loading screen
-        }, false);
-        let url = 'https://us-central1-yhack2019-d0dff.cloudfunctions.net/getSummary';
-        let filepath = '/photos/myPictureName';
-        ajax.open("GET", url + "?filepath=" + filepath);
-        ajax.send();
-        // window.location.href = "results.html";
-      });
-    });
-  </script>
+  <script src="index.js"></script>
 </body>
 </html>
