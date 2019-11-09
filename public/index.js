@@ -1,19 +1,4 @@
-let scanPage = document.getElementById("scanPage");
-let loadPage = document.getElementById("loadPage");
-let resultsPage = document.getElementById("resultsPage");
-
-let scan = document.getElementById("imageUpload");
-scan.addEventListener("click", buttonPressed, false);
-scan.addEventListener('input', updateValue, false);
-
-function buttonPressed (){
-  console.log("button pressed!");
-}
-
-function updateValue(e) {
-  console.log("Inputted!");
-}
-
+// Firebase configuration
 var firebaseConfig = {
   apiKey: "AIzaSyAj-dMoGDQVJNjQE3042RowBnmy3DLklc0",
   authDomain: "yhack2019-d0dff.firebaseapp.com",
@@ -28,8 +13,21 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-let storageRef = firebase.storage().ref('photos/myPictureName');
+// Elements that are pages
+let scanPage = document.getElementById("scanPage");
+let loadPage = document.getElementById("loadPage");
+let resultsPage = document.getElementById("resultsPage");
+
+// Elements within pages
+let title = document.getElementById("result-title");
+let keyContent = document.getElementById("result-content");
+let scan = document.getElementById("imageUpload");
 let fileUpload = document.getElementById("imageUpload");
+
+// GCP Cloud Service(s)
+let storageRef = firebase.storage().ref('photos/myPictureName');
+
+// Event Listener(s)
 fileUpload.addEventListener('change', function(evt) {
   let firstFile = evt.target.files[0]; // upload the first file only
   let uploadTask = storageRef.put(firstFile).then( () => {
@@ -41,10 +39,12 @@ fileUpload.addEventListener('change', function(evt) {
       console.log(event);
       console.log(event.target.response);
 
-      // todo: swap scanPage with loadPage here
       loadPage.style.display = 'none';
       resultsPage.style.display = 'initial';
+
       // dynamically load in data to results.html
+      title.innerHTML = event.target.response.company;
+      document.getElementById("result-content").innerHTML = event.target.response.paragraphs;
     }, false);
     let url = 'https://us-central1-yhack2019-d0dff.cloudfunctions.net/getSummary';
     let filepath = '/photos/myPictureName';
