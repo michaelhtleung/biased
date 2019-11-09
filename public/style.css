@@ -139,7 +139,7 @@ label img {
   text-transform: capitalize;
 }
 
-#result-content{
-  font-size: 14px;
+.result-content{
+  font-size: 18px;
   margin-bottom: 4px;
 }

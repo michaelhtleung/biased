@@ -45,7 +45,9 @@ fileUpload.addEventListener('change', function(evt) {
 
       // dynamically load in data to results.html
       title.innerHTML = responseObj.company;
-      document.getElementById("result-content").innerHTML = responseObj.paragraphs;
+      document.getElementById("result-content-0").innerHTML = responseObj.paragraphs[0];
+      document.getElementById("result-content-1").innerHTML = responseObj.paragraphs[1];
+      document.getElementById("result-content-2").innerHTML = responseObj.paragraphs[2];
     }, false);
     let url = 'https://us-central1-yhack2019-d0dff.cloudfunctions.net/getSummary';
     let filepath = '/photos/myPictureName';

@@ -21,8 +21,9 @@ const client = new vision.ImageAnnotatorClient();
 // global vars
 var keywordArray = ["Animal testing", "Factory farming", "Animal rights", "Cruelty", "Environment", "Climate change",
  "Pollution", "Toxin", "Habitats", "Resources", "Palm oil", "Human rights", "Irresponsible", "Military",
- "Anti-social", "Finance", "Boycott", "Controversial", "Technology", "Political", "Ethos", "Product",
- "Sustainability", "Organic", "Fair-trade", "Energy", "Efficient", "Vegan", "Vegetarian"];
+ "Anti-social", "Finance", "Boycott", "Controversial", "Political", "Ethos",
+ "Sustainability", "Organic", "Fair-trade", "Energy", "Efficient", "Vegan", "Vegetarian", "Controversy", "Controversial",
+"Unethical"];
 
 exports.getSummary = functions.https.onRequest((req, res) => {
  return cors(req, res, () => {
@@ -46,30 +47,6 @@ exports.getSummary = functions.https.onRequest((req, res) => {
      });
  });
 });
-
-exports.helloWorld = functions.https.onRequest((req, res) => {
- return cors(req, res, () => {
-  for (var i = 0; i < 10; i++) {
-   console.log(i);
-  }
- });
-});
-
-function saveParagraphs(name, paragraphs, callback){
- db.collection('company').doc("TEST").set({
-  name: 'CCC',
-  paragraphs: 'DDD' // array of strings
-  // name: name,
-  // paragraphs: paragraphs // array of strings
- }).then( () => {
-  console.log("Paragraphs saved");
-  return callback();
- }).catch( (err) => {
-  if (err) throw err;
-  console.log("Failure saving");
-  return callback();
- });
-}
 
 function crawl(companyName, smallback) {
  var c = new Crawler({
