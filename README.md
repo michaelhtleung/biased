@@ -27,7 +27,9 @@ Output Results Page
 - Machine Learning APIs
 - Web Crawling
 - Text Summarization Algorithms
+- Single-Threaded Asynchronous Programming 
 - AJAX
+- HTTP Client-Webserver Communication
 - Event Listeners
 
 ## Tools
