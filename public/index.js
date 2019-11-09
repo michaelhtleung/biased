@@ -42,7 +42,7 @@ fileUpload.addEventListener('change', function(evt) {
       console.log(event.target.responseText);
 
       // todo: swap scanPage with loadPage here
-      scanPage.style.display = 'none';
+      loadPage.style.display = 'none';
       resultsPage.style.display = 'initial';
       // dynamically load in data to results.html
     }, false);
@@ -50,7 +50,7 @@ fileUpload.addEventListener('change', function(evt) {
     let filepath = '/photos/myPictureName';
     ajax.open("GET", url + "?filepath=" + filepath);
     ajax.send();
-    // scanPage.style.display = 'none';
-    // loadPage.style.display = 'initial';
+    scanPage.style.display = 'none';
+    loadPage.style.display = 'initial';
   });
 });
