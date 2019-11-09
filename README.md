@@ -25,7 +25,6 @@ Output Results Page
 ## Concepts Applied
 - Cloud Services 
 - Machine Learning APIs
-
 - Web Crawling
 - Text Summarization Algorithms
 - AJAX
@@ -36,8 +35,8 @@ Output Results Page
 - Firebase Cloud Functions
 - GCP Cloud Vision API
 - GCP Cloud Storage
-- crawler npm module
-- cors npm module
+- Crawler NPM Module
+- CORS NPM Module
 
 ### Client-side
 - HTML, CSS, JS
