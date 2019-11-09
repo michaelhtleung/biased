@@ -30,12 +30,10 @@ exports.getSummary = functions.https.onRequest((req, res) => {
   const fileName = req.query.filepath;
   const request = `gs://${bucketName}/${fileName}`;
 
-  // res.send("bye");
   client
      .logoDetection(request)
      .then(response => {
       let company = response[0].logoAnnotations[0].description.toLowerCase();
-      // res.send(company);
       crawl(company, (error, result) => {
        return res.send(result);
       });
@@ -81,12 +79,8 @@ function crawl(companyName, smallback) {
     var $ = res.$;
     paragraphArray = $("p").text().split("\n")
    }
-   return smallback(null, 'baz');
-   // done();
-   // return 'foo';
-   // let curated_paragraphs = checkForKeywords(paragraphArray);
-   // return curated_paragraphs;
-   // saveParagraphs(companyName, curated_paragraphs, done);
+   let curated_paragraphs = checkForKeywords(paragraphArray);
+   return smallback(null, curated_paragraphs);
   }
  });
  // Queue just one URL, with default callback
@@ -98,10 +92,11 @@ function checkForKeywords(paragraphArray) {
  for (var i = 0; i < paragraphArray.length; i++) {
   for (var j = 0; j < keywordArray.length; j++) {
    if ((paragraphArray[i].includes(keywordArray[j]) || (paragraphArray[i].includes(keywordArray[j].toLowerCase())))) {
-    foundKeywordsArray = paragraphArray[i]
-    console.log(foundKeywordsArray + "\n")
+    foundKeywordsArray.push(paragraphArray[i]);
+    if (foundKeywordsArray.length >= 3) {
+     return foundKeywordsArray;
+    }
    }
   }
  }
- return foundKeywordsArray;
 }
