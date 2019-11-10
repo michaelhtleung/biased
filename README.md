@@ -16,11 +16,11 @@ Home Page
 
 Input Photograph
 
-![Input Photo Image](https://github.com/michaelhtleung/yhack2019/blob/master/public/img/microsoft.png)
+![Input Photo Image](https://github.com/michaelhtleung/yhack2019/blob/master/public/img/google.jpg)
 
 Output Results Page
 
-![Output Results Photo Image](https://github.com/michaelhtleung/yhack2019/blob/master/public/img/scanPage.png)
+![Output Results Photo Image](https://github.com/michaelhtleung/yhack2019/blob/master/public/img/googleResults.png)
 
 ## Concepts Applied
 - Cloud Services 
